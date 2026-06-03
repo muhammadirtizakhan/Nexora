@@ -460,7 +460,7 @@ async function sendMessage(text) {
     try {
       const BACKEND_URL = window.location.hostname === 'localhost'
   ? 'http://localhost:3000'
-  : 'https://nexora-chatbot.vercel.app';
+  : 'https://nexora-wjzh.vercel.app/';
 
 const res = await fetch(`${BACKEND_URL}/api/chat`, {
             method: 'POST',
