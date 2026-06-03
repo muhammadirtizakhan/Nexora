@@ -129,7 +129,12 @@ async function handleSignIn(event) {
         showAuthMessage(msgs[err.code] || 'Sign in failed. ' + err.message, true);
     }
 }
-
+function sendQuickMsg(message) {
+    if (!message) return;
+    const input = document.getElementById('chatInput');
+    if (input) input.value = message;
+    sendMessage(message);
+}
 // ============================================================
 //  PROFILE UI
 // ============================================================
