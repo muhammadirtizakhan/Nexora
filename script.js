@@ -135,6 +135,7 @@ function sendQuickMsg(message) {
     if (input) input.value = message;
     sendMessage(message);
 }
+window.sendQuickMsg = sendQuickMsg;
 // ============================================================
 //  PROFILE UI
 // ============================================================
