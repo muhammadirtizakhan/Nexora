@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landing - Nexora</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="./assets/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav id="navbar" class="flex items-center justify-between fixed z-50 top-0 w-full px-6 md:px-16 lg:px-24 xl:px-32 py-4 backdrop-blur">
+        <a href="#top">
+            <img id="logo" src="https://www.nexoraglobal.info/_next/image?url=%2Fimages%2Flogo.png&w=640&q=75" alt="Logo" class="h-9 md:h-9.5 w-auto shrink-0">
+        </a>
+
+        <div class="hidden items-center md:gap-8 lg:gap-12 md:flex lg:pl-20">
+            <a href="#top" class="hover:text-slate-600 dark:hover:text-slate-300">Home</a>
+            <a href="#features" class="hover:text-slate-600 dark:hover:text-slate-300">Services</a>
+            <a href="#projects" class="hover:text-slate-600 dark:hover:text-slate-300">Projects</a>
+            <a href="#pricing" class="hover:text-slate-600 dark:hover:text-slate-300">Pricing</a>
+            <a href="#faq" class="hover:text-slate-600 dark:hover:text-slate-300">FAQS</a>
+        </div>
+
+        <div id="mobileMenu" class="fixed inset-0 flex flex-col items-center justify-center gap-6 text-lg font-medium bg-white/60 dark:bg-black/40 backdrop-blur-md md:hidden transition duration-300 -translate-x-full">
+            <a href="#top">Home</a>
+            <a href="#features">Services</a>
+            <a href="#pricing">Pricing</a>
+            <a href="#projects">Projects</a>
+            <a href="#faq">FAQ</a>
+            <button class="signin-btn">Sign in</button>
+            <button id="closeMenu" class="aspect-square size-10 p-1 items-center justify-center bg-purple-600 hover:bg-purple-700 transition text-white rounded-md flex">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+        </div>
+
+        <div class="flex items-center gap-2 md:gap-6">
+            <button id="themeToggle" class="flex items-center justify-center size-9 p-2 rounded-full bg-slate-950/5 hover:bg-slate-950/10 dark:bg-white/10 dark:hover:bg-white/20 transition-colors duration-200 ease-in-out">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></svg>
+            </button>
+
+            <!-- Profile Dropdown - Desktop -->
+            <div id="profileDropdown" class="relative hidden md:block">
+                <button id="profileBtn" title="Profile">
+                    <span id="profileInitial">U</span>
+                </button>
+                <div id="profileMenu" class="hidden">
+                    <div class="pm-header">
+                        <div class="pm-avatar" id="profileAvatarLarge">U</div>
+                        <div class="pm-name" id="profileName">User</div>
+                        <div class="pm-email" id="profileEmail">user@example.com</div>
+                    </div>
+                    <div class="pm-body">
+                        <button class="pm-item" onclick="openChangeProfileModal()">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                            Change Profile Name
+                        </button>
+                        <button class="pm-item" onclick="openChangePasswordModal()">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            Change Password
+                        </button>
+                        <div class="pm-divider"></div>
+                        <button class="pm-item danger" onclick="handleLogout()">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                            Logout
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mobile Profile Button -->
+            <button id="mobileProfileBtn" class="hidden items-center justify-center size-9 rounded-full bg-purple-600 text-white font-semibold text-sm" title="Profile">
+                <span id="mobileProfileInitial">U</span>
+            </button>
+
+            <!-- Mobile Profile Menu -->
+            <div id="mobileProfileMenu" class="fixed inset-0 flex-col items-center justify-center gap-6 text-lg font-medium bg-white/60 dark:bg-black/40 backdrop-blur-md transition duration-300 -translate-x-full z-40" style="display:none;">
+                <div class="flex flex-col items-center gap-4">
+                    <div class="pm-avatar text-2xl" id="mobileProfileAvatarLarge">U</div>
+                    <div class="text-center">
+                        <div class="pm-name text-base" id="mobileProfileName">User</div>
+                        <div class="pm-email text-sm text-slate-600 dark:text-slate-400" id="mobileProfileEmail">user@example.com</div>
+                    </div>
+                </div>
+                <div class="w-full px-4 space-y-2">
+                    <button class="pm-item w-full" onclick="openChangeProfileModal()">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                        Change Profile Name
+                    </button>
+                    <button class="pm-item w-full" onclick="openChangePasswordModal()">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        Change Password
+                    </button>
+                    <div class="pm-divider"></div>
+                    <button class="pm-item danger w-full" onclick="handleLogout()">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+                        Logout
+                    </button>
+                </div>
+                <button id="closeMobileProfileMenu" class="aspect-square size-10 p-1 items-center justify-center bg-purple-600 hover:bg-purple-700 transition text-white rounded-md flex">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+                </button>
+            </div>
+
+            <button class="signin-btn hidden md:block hover:bg-slate-100 dark:hover:bg-purple-950 transition px-4 py-2 border border-purple-600 rounded-md">Sign in</button>
+            <button class="hidden md:block px-4 py-2 bg-purple-600 hover:bg-purple-700 transition text-white rounded-md">find role</button>
+            <button id="openMenu" class="md:hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="flex flex-col items-center justify-center text-center px-4 bg-[url('./assets/light-hero-gradient.svg')] dark:bg-[url('./assets/dark-hero-gradient.svg')] bg-no-repeat bg-cover">
+        <div class="flex flex-wrap items-center justify-center gap-3 p-1.5 pr-4 mt-46 rounded-full border border-slate-300 dark:border-slate-600 bg-white/70 dark:bg-slate-600/20">
+            <div class="flex items-center -space-x-3">
+                <img class="size-7 rounded-full" height="50" width="50" src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?q=80&w=50" alt="userImage1" />
+                <img class="size-7 rounded-full" height="50" width="50" src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?q=80&w=50" alt="userImage2" />
+                <img class="size-7 rounded-full" height="50" width="50" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=50&h=50&auto=format&fit=crop" alt="userImage3" />
+            </div>
+            <p class="text-xs">Join Our Team</p>
+        </div>
+        <h1 class="mt-2 text-5xl/15 md:text-[64px]/19 font-semibold max-w-2xl">
+            Every startup begins with
+            <span class="bg-gradient-to-r from-[#923FEF] dark:from-[#C99DFF] to-[#C35DE8] dark:to-[#E1C9FF] bg-clip-text text-transparent">spark</span>
+        </h1>
+        <p class="text-base dark:text-slate-300 max-w-lg mt-2">Turning local businesses into digital success stories. We personally visit local shops and businesses, listen to their story, and craft stunning websites and online stores that bring them more customers.</p>
+        <div class="flex items-center gap-4 mt-8">
+            <button class="bg-purple-600 hover:bg-purple-700 transition text-white rounded-md px-6 h-11"><a href="#"> Get started</a></button>
+            <button class="flex items-center gap-2 border border-purple-900 transition text-slate-600 dark:text-white rounded-md px-6 h-11">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="m16 13 5.223 3.482a.5.5 0 0 0 .777-.416V7.87a.5.5 0 0 0-.752-.432L16 10.5"/><rect x="2" y="6" width="14" height="12" rx="2"/></svg>
+                <span>Watch demo</span>
+            </button>
+        </div>
+        <h3 class="text-base text-center text-slate-400 mt-28 pb-14 font-medium">Inspired by these big companies —</h3>
+        <div class="overflow-hidden w-full relative max-w-5xl mx-auto select-none">
+            <div class="absolute left-0 top-0 h-full w-20 z-10 pointer-events-none bg-gradient-to-r from-white dark:from-black to-transparent"></div>
+            <div class="marquee-inner will-change-transform max-w-5xl mx-auto">
+                <div id="logo-track" class="flex"></div>
+            </div>
+            <div class="absolute right-0 top-0 h-full w-20 md:w-40 z-10 pointer-events-none bg-gradient-to-l from-white dark:from-black to-transparent"></div>
+        </div>
+    </div>
+
+    <!-- Features Section -->
+    <div class="text-center">
+        <p class="text-center font-medium text-indigo-600 dark:text-indigo-400 mt-28 px-10 py-2 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 w-max mx-auto">Features</p>
+        <h2 class="text-3xl font-semibold text-center mx-auto mt-4">Services we provide</h2>
+        <p class="mt-2 text-slate-500 dark:text-slate-300 max-w-xl mx-auto">We design scalable solutions tailored to your business needs, making digital transformation seamless and effortless</p>
+    </div>
+    <div id="features" class="flex flex-wrap items-center justify-center gap-6 md:gap-4 mt-10 px-6 md:px-16 lg:px-24 xl:px-32"></div>
+
+    <!-- Projects Section -->
+    <div id="projects" class="text-center mt-28">
+        <p class="text-center font-medium text-indigo-600 dark:text-indigo-400 px-10 py-2 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 w-max mx-auto">Projects</p>
+        <h2 class="text-3xl font-semibold text-center mx-auto mt-4">Our Latest Projects</h2>
+        <p class="mt-2 text-slate-500 dark:text-slate-300 max-w-xl mx-auto">Explore our polished portfolio of modern web applications and digital solutions</p>
+    </div>
+    <div id="projects-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-6 mt-10 px-6 md:px-16 lg:px-24 xl:px-32 pb-20"></div>
+
+    <div class="relative"><div class="backdrop-mid"></div></div>
+
+    <!-- Pricing Section -->
+    <div class="relative">
+        <p class="text-center font-medium text-indigo-600 dark:text-indigo-400 mt-28 px-10 py-2 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 w-max mx-auto">PRICING</p>
+        <h3 class="text-3xl font-semibold text-center mx-auto mt-4">Our Pricing Plans</h3>
+        <p class="text-slate-600 dark:text-slate-300 text-center mt-2 max-w-lg mx-auto">Start finding leads for free, upgrade as your agency grows.</p>
+        <div id="pricing" class="flex flex-wrap items-center justify-center gap-6 mt-16"></div>
+    </div>
+
+    <!-- Faq Section -->
+    <div id="faq" class="relative max-w-xl mx-auto flex flex-col items-center justify-center px-4 md:px-0 mt-20">
+        <div class="text-center">
+            <p class="text-center font-medium text-indigo-600 dark:text-indigo-400 mt-28 px-10 py-2 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 w-max mx-auto">FAQ's</p>
+            <h2 class="text-3xl font-semibold text-center mx-auto mt-4">Frequently asked questions</h2>
+            <p class="mt-2 text-slate-500 dark:text-slate-300 max-w-xl mx-auto">Everything you need to know about getting started.</p>
+        </div>
+        <div id="faq-container" class="mt-8 w-full"></div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact-section" class="px-6 md:px-16 lg:px-24 xl:px-32 mt-40 pb-4" style="padding-top:60px">
+        <div class="text-center mb-12">
+            <p class="text-center font-medium text-indigo-600 dark:text-indigo-400 mt-28 px-10 py-2 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-300 dark:border-slate-700 w-max mx-auto">Contact</p>
+            <h2 class="text-3xl font-semibold mt-4">Let's build something together</h2>
+            <p class="mt-2 text-slate-500 dark:text-slate-300 max-w-lg mx-auto">Have a project in mind? We'd love to hear about it.</p>
+        </div>
+        <div class="contact-wrap">
+            <div class="contact-info">
+                <div>
+                    <h3>Get in Touch</h3>
+                    <p>We help local businesses go digital. Reach out and let's discuss your vision.</p>
+                    <div class="contact-info-items">
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.62 3.38 2 2 0 0 1 3.6 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.37a16 16 0 0 0 6.08 6.08l.95-.95a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.73 16z"/></svg></div>
+                            <div class="contact-info-text"><span>Phone</span><p>+92 315 1196495</p></div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg></div>
+                            <div class="contact-info-text"><span>Email</span><p>nexoradevx@gmail.com</p></div>
+                        </div>
+                        <div class="contact-info-item">
+                            <div class="contact-info-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></div>
+                            <div class="contact-info-text"><span>Location</span><p>Karachi, Pakistan</p></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="contact-social">
+                    <a href="https://github.com/muhmmmadirtizakhan" title="GitHub" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.4 5.4 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65S8.93 17.38 9 18v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg></a>
+                    <a href="#" title="LinkedIn"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect width="4" height="12" x="2" y="9"/><circle cx="4" cy="4" r="2"/></svg></a>
+                    <a href="https://www.instagram.com/nexora.devx?igsh=MTJ6c2c0eDJxNG82Ng==" title="Instagram" target="_blank"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" x2="17.51" y1="6.5" y2="6.5"/></svg></a>
+                    <!-- WhatsApp in social links -->
+                    <a href="https://wa.me/923151196495" title="WhatsApp" target="_blank">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="#fff" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="contact-form-panel">
+                <h4>Send us a message</h4>
+                <p class="sub">Fill out the form and we'll get back to you within 24 hours.</p>
+                <form action="https://formspree.io/f/mnjlloaj" method="POST">
+                    <div class="contact-row">
+                        <div class="contact-field">
+                            <label class="contact-label">Full Name</label>
+                            <input type="text" name="name" class="contact-input" placeholder="Your name" required>
+                        </div>
+                        <div class="contact-field">
+                            <label class="contact-label">Email</label>
+                            <input type="email" name="email" class="contact-input" placeholder="you@example.com" required>
+                        </div>
+                    </div>
+                    <div class="contact-field">
+                        <label class="contact-label">Subject</label>
+                        <input type="text" name="subject" class="contact-input" placeholder="What's this about?">
+                    </div>
+                    <div class="contact-field">
+                        <label class="contact-label">Message</label>
+                        <textarea name="message" class="contact-input" rows="5" placeholder="Tell us about your project..." style="resize:vertical;" required></textarea>
+                    </div>
+                    <button type="submit" class="contact-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/></svg>
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <div class="flex flex-col items-center text-center justify-center mt-20">
+        <h3 class="text-3xl font-semibold mt-16 mb-4">Start finding quality leads today</h3>
+        <p class="text-slate-600 dark:text-slate-200 max-w-xl mx-auto">Discover local businesses with outdated websites or tech stacks, and generate personalized outreach plans instantly—no guesswork required.</p>
+        <div class="cta-buttons flex items-center gap-4 mt-8">
+            <button class="bg-purple-600 hover:bg-purple-700 transition text-white rounded-md px-6 h-11"><a href="#projects" class="text-white">Our Working</a></button>
+            <button class="border border-purple-900 transition text-slate-600 dark:text-white rounded-md px-6 h-11">become a part of the team</button>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="relative px-6 md:px-16 lg:px-24 xl:px-32 mt-40 w-full dark:text-slate-50">
+        <img id="landing-text" class="absolute max-w-4xl w-full h-auto -mt-30 max-md:px-4 right-0 md:right-16 lg:right-24 xl:right-32 top-0 pointer-events-none"
+            src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 930 340'%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='120' fill='%238b5cf6' opacity='0.13'%3ENEXORA%3C/text%3E%3C/svg%3E"
+            alt="Nexora" width="930" height="340" />
+        <div class="flex flex-col md:flex-row justify-between w-full gap-10 border-b border-gray-200 dark:border-slate-700 pb-6">
+            <div class="md:max-w-114">
+                <img id="logo-footer" class="h-9 md:h-9.5 w-auto shrink-0" src="https://www.nexoraglobal.info/_next/image?url=%2Fimages%2Flogo.png&w=640&q=75" alt="Logo" width="140" height="40" />
+                <p class="mt-6">The smartest way to find, qualify, and close local business clients using AI lead intelligence.</p>
+            </div>
+            <div class="flex-1 flex items-start md:justify-end gap-20">
+                <div>
+                    <h2 class="font-semibold mb-5">Company</h2>
+                    <ul class="space-y-2">
+                        <li><a href="#top" class="hover:text-purple-600 transition">Home</a></li>
+                        <li><a href="#features" class="hover:text-purple-600 transition">Services</a></li>
+                        <li><a href="#projects" class="hover:text-purple-600 transition">Projects</a></li>
+                        <li><a href="#pricing" class="hover:text-purple-600 transition">Pricing</a></li>
+                        <li><a href="#faq" class="hover:text-purple-600 transition">FAQS</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h2 class="font-semibold mb-5">Get in touch</h2>
+                    <div class="space-y-2">
+                        <p>+92 3151196495</p>
+                        <p>nexoradevx@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="pt-4 text-center pb-5">Copyright 2026 © <a href="https://prebuiltui.com?utm_source=landing">Nexora</a>. All Right Reserved.</p>
+    </footer>
+
+    <!-- ============ FLOATING ACTION BUTTONS ============ -->
+    <!-- WhatsApp Floating Button -->
+    <a href="https://wa.me/923151196495" class="whatsapp-fab" target="_blank" title="Chat on WhatsApp" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" fill="white" xmlns="http://www.w3.org/2000/svg">
+            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/>
+        </svg>
+        <span class="fab-tooltip">Chat on WhatsApp</span>
+    </a>
+
+    <!-- Chatbot Toggle Button -->
+    <button class="chatbot-fab" id="chatbotToggle" title="Chat with Nexora AI" aria-label="Open Chatbot">
+        <svg class="chat-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </svg>
+        <svg class="close-icon" style="display:none" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+        </svg>
+        <span class="fab-tooltip">Ask Nexora AI</span>
+    </button>
+
+    <!-- ============ CHATBOT WIDGET ============ -->
+    <div id="chatbotWidget" class="chatbot-widget" aria-hidden="true">
+        <div class="chatbot-header">
+            <div class="chatbot-header-info">
+                <div class="chatbot-avatar">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18">
+                        <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                    </svg>
+                </div>
+                <div>
+                    <div class="chatbot-title">Nexora AI</div>
+                    <div class="chatbot-status"><span class="status-dot"></span> Online</div>
+                </div>
+            </div>
+            <button class="chatbot-close-btn" id="chatbotClose" aria-label="Close chatbot">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16">
+                    <path d="M18 6 6 18"/><path d="m6 6 12 12"/>
+                </svg>
+            </button>
+        </div>
+        <div class="chatbot-messages" id="chatMessages">
+            <div class="chat-msg bot">
+                <div class="chat-bubble">
+                    👋 Hi! I'm the <strong>Nexora AI</strong> assistant. Ask me anything about our services, pricing, or how we can help your business go digital!
+                </div>
+                <div class="chat-time">Just now</div>
+            </div>
+            <div class="chat-quick-btns">
+                <button onclick="sendQuickMsg('What services do you offer?')">Services</button>
+                <button onclick="sendQuickMsg('What are your pricing plans?')">Pricing</button>
+                <button onclick="sendQuickMsg('How can I contact you?')">Contact</button>
+                <button onclick="sendQuickMsg('Tell me about Nexora')">About us</button>
+            </div>
+        </div>
+        <div class="chatbot-typing" id="chatTyping" style="display:none">
+            <div class="typing-bubble"><span></span><span></span><span></span></div>
+            <div class="typing-label">Nexora AI is typing…</div>
+        </div>
+        <div class="chatbot-input-row">
+            <input type="text" id="chatInput" class="chatbot-input" placeholder="Ask anything…" autocomplete="off" aria-label="Chat message" />
+            <button class="chatbot-send" id="chatSend" aria-label="Send message">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="17" height="17">
+                    <path d="m22 2-7 20-4-9-9-4Z"/><path d="M22 2 11 13"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Auth Modal -->
+    <div id="authModal">
+        <div id="authModalBg"></div>
+        <div id="authCard">
+            <button id="closeAuthModal">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <div id="authInner">
+                <div class="auth-brand">
+                    <div class="auth-brand-icon"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></div>
+                    <span class="auth-brand-name">Nexora</span>
+                    <span class="auth-brand-badge">✦ Platform</span>
+                </div>
+                <div class="auth-tabs">
+                    <button class="auth-tab active" onclick="switchTab('signin')">Sign In</button>
+                    <button class="auth-tab" onclick="switchTab('signup')">Sign Up</button>
+                </div>
+                <div class="auth-panel active" id="tab-signin">
+                    <p class="auth-heading">Welcome back</p>
+                    <p class="auth-sub">Sign in to your Nexora account</p>
+                    <form>
+                        <label class="auth-label">Email</label>
+                        <div class="auth-field">
+                            <svg class="auth-field-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <input type="email" class="auth-input" placeholder="you@example.com" required>
+                        </div>
+                        <label class="auth-label">Password</label>
+                        <div class="auth-field">
+                            <svg class="auth-field-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            <input type="password" class="auth-input" placeholder="••••••••" required>
+                        </div>
+                        <div class="auth-forgot"><a href="#" onclick="handleForgotPassword()">Forgot password?</a></div>
+                        <button type="submit" class="auth-btn">Sign In to Nexora</button>
+                    </form>
+                </div>
+                <div class="auth-panel" id="tab-signup">
+                    <p class="auth-heading">Create account</p>
+                    <p class="auth-sub">Join Nexora and go digital today</p>
+                    <form>
+                        <label class="auth-label">Full Name</label>
+                        <div class="auth-field">
+                            <svg class="auth-field-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg>
+                            <input type="text" class="auth-input" placeholder="Your full name" required>
+                        </div>
+                        <label class="auth-label">Email</label>
+                        <div class="auth-field">
+                            <svg class="auth-field-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+                            <input type="email" class="auth-input" placeholder="you@example.com" required>
+                        </div>
+                        <label class="auth-label">Password</label>
+                        <div class="auth-field">
+                            <svg class="auth-field-icon" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="11" x="3" y="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                            <input type="password" class="auth-input" placeholder="Create a password" required>
+                        </div>
+                        <button type="submit" class="auth-btn">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Password Modal -->
+    <div id="changePasswordModal" class="nexora-modal">
+        <div class="nexora-modal-bg" onclick="closeChangePasswordModal()"></div>
+        <div class="nexora-modal-card">
+            <button class="nexora-modal-close" onclick="closeChangePasswordModal()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <div class="nexora-modal-inner">
+                <div class="nexora-modal-title">Change Password</div>
+                <div class="nexora-modal-sub">Re-authenticate then set your new password</div>
+                <form id="changePasswordForm">
+                    <label class="nf-label">Current Password</label>
+                    <input type="password" id="currentPassword" class="nf-input" placeholder="••••••••" required>
+                    <label class="nf-label">New Password</label>
+                    <input type="password" id="newPassword" class="nf-input" placeholder="••••••••" required>
+                    <label class="nf-label">Confirm New Password</label>
+                    <input type="password" id="confirmPassword" class="nf-input" placeholder="••••••••" required>
+                    <div class="nf-btn-row">
+                        <button type="button" class="nf-btn-cancel" onclick="closeChangePasswordModal()">Cancel</button>
+                        <button type="submit" class="nf-btn-submit">Update Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Change Profile Name Modal -->
+    <div id="changeProfileModal" class="nexora-modal">
+        <div class="nexora-modal-bg" onclick="closeChangeProfileModal()"></div>
+        <div class="nexora-modal-card">
+            <button class="nexora-modal-close" onclick="closeChangeProfileModal()">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
+            </button>
+            <div class="nexora-modal-inner">
+                <div class="nexora-modal-title">Update Display Name</div>
+                <div class="nexora-modal-sub">This name appears across your Nexora profile</div>
+                <form id="changeProfileForm">
+                    <label class="nf-label">Full Name</label>
+                    <input type="text" id="newProfileName" class="nf-input" placeholder="Your name" required>
+                    <div class="nf-btn-row">
+                        <button type="button" class="nf-btn-cancel" onclick="closeChangeProfileModal()">Cancel</button>
+                        <button type="submit" class="nf-btn-submit">Save Name</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>
