@@ -1013,3 +1013,38 @@ body::after { content: ''; position: fixed; bottom: -150px; right: -150px; width
 @property --tw-backdrop-blur { syntax: "*"; inherits: false; }
 @property --tw-duration { syntax: "*"; inherits: false; }
 @property --tw-ease { syntax: "*"; inherits: false; }
+/* ============================================================
+   FIX: Mobile par desktop profile chhupao
+   ============================================================ */
+@media (max-width: 767px) {
+    #profileDropdown {
+        display: none !important;
+    }
+}
+
+/* ============================================================
+   FIX: Desktop par mobile profile button chhupao
+   ============================================================ */
+@media (min-width: 768px) {
+    #mobileProfileBtn {
+        display: none !important;
+    }
+}
+
+/* ============================================================
+   FIX: Logo track images styling
+   ============================================================ */
+#logo-track img {
+    height: 32px;
+    width: auto;
+    margin: 0 24px;
+    filter: grayscale(100%);
+    opacity: 0.6;
+    transition: all 0.3s ease;
+}
+
+#logo-track img:hover {
+    filter: grayscale(0%);
+    opacity: 1;
+    transform: scale(1.05);
+}
