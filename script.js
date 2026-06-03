@@ -388,7 +388,7 @@ function renderLogoTrack() {
     const track = document.getElementById('logo-track');
     if (!track) return;
     track.innerHTML = [...logos, ...logos].map(name =>
-         `<img class="mx-11" src="https://cdn.simpleicons.org/${name}/8b5cf6" alt="${name}" width="48" height="48" draggable="false"/>`
+          `<img class="mx-11" src="/assets/companies-logo/${name}.svg" alt="${name}" width="100" height="100" draggable="false" onerror="this.style.display='none'"/>`
     ).join('');
 }
 
@@ -459,8 +459,8 @@ async function sendMessage(text) {
 
     try {
       const BACKEND_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:3000'
-  : 'https://nexora-wjzh.vercel.app/';
+    ? 'http://localhost:3000'
+    : 'https://nexora-wjzh.vercel.app';    //
 
 const res = await fetch(`${BACKEND_URL}/api/chat`, {
             method: 'POST',
