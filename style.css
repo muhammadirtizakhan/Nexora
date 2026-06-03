@@ -1048,3 +1048,18 @@ body::after { content: ''; position: fixed; bottom: -150px; right: -150px; width
     opacity: 1;
     transform: scale(1.05);
 }
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0f0f1a;
+}
+::-webkit-scrollbar-thumb {
+    background: #7c3aed;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #7c3aed;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #a855f7;
+    box-shadow: 0 0 15px #a855f7;
+}
