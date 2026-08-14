@@ -656,7 +656,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const logo         = document.getElementById('logo');
     const landingText  = document.getElementById('landing-text');
     const logoFooter   = document.getElementById('logo-footer');
-    const logoUrl      = 'https://www.nexoraglobal.info/_next/image?url=%2Fimages%2Flogo.png&w=640&q=75';
     const landingLight = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 930 340'%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='120' fill='%238b5cf6' opacity='0.13'%3ENEXORA%3C/text%3E%3C/svg%3E";
     const landingDark  = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 930 340'%3E%3Ctext x='50%25' y='55%25' dominant-baseline='middle' text-anchor='middle' font-family='Inter, sans-serif' font-size='120' fill='%23c4b5fd' opacity='0.14'%3ENEXORA%3C/text%3E%3C/svg%3E";
     const moonIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.985 12.486a9 9 0 1 1-9.473-9.472c.405-.022.617.46.402.803a6 6 0 0 0 8.268 8.268c.344-.215.825-.004.803.401"/></svg>`;
@@ -666,8 +665,6 @@ document.addEventListener('DOMContentLoaded', () => {
         themeToggle.addEventListener('click', () => {
             document.documentElement.classList.toggle('dark');
             const isDark = document.documentElement.classList.contains('dark');
-            if (logo)        logo.src = logoUrl;
-            if (logoFooter)  logoFooter.src = logoUrl;
             themeToggle.innerHTML = isDark ? moonIcon : sunIcon;
             if (landingText) landingText.src = isDark ? landingDark : landingLight;
         });
