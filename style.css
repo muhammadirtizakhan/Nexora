@@ -1080,3 +1080,8 @@ body::after { content: ''; position: fixed; bottom: -150px; right: -150px; width
     background-clip: text;
     color: transparent;
 }
+/* Dark mode mein logo ko visible banane ke liye */
+.dark #logo,
+.dark #logo-footer {
+    filter: brightness(0) invert(1);
+}
