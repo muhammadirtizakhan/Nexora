@@ -148,6 +148,7 @@
   .line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
   .flex { display: flex; }
   .hidden { display: none; }
+  .block { display: block; }
   .aspect-square { aspect-ratio: 1 / 1; }
   .size-7 { width: 1.75rem; height: 1.75rem; }
   .size-8 { width: 2rem; height: 2rem; }
@@ -353,6 +354,8 @@
   .dark .dark\:hover\:bg-purple-950:hover { background-color: oklch(29.1% 0.149 302.717); }
   .dark .dark\:hover\:bg-white\/20:hover { background-color: color-mix(in oklab, #fff 20%, transparent); }
   .dark .dark\:hover\:text-slate-300:hover { color: oklch(86.9% 0.022 252.894); }
+  .dark .dark\:hidden { display: none; }
+  .dark .dark\:block { display: block; }
 }
 
 /* ============================================================
@@ -1079,9 +1082,4 @@ body::after { content: ''; position: fixed; bottom: -150px; right: -150px; width
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-}
-/* Dark mode mein logo ko visible banane ke liye */
-.dark #logo,
-.dark #logo-footer {
-    filter: brightness(0) invert(1);
 }
