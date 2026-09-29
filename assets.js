@@ -23,13 +23,57 @@ export const featuresData = [
     },
 ];
 
- export const projectsData = [
-        { title:"EDUSITY", desc:"Edusity is a modern website built with React and CSS. Fully responsive, works on all devices, features clean UI/UX. Users can watch embedded video and interact via Web3 forms.", tags:["React","Tailwind","Vercel"], liveLink:"https://edusity-com-beige.vercel.app/" },
-        { title:"QUICKSTAY", desc:"QuickStay — Scalable MERN booking platform with real-time availability, secure authentication & seamless reservations.", tags:["MERN stack","Cloudinary","clerk"], liveLink:"https://hotel-booking-app-amber-omega.vercel.app/" },
-        { title:"AETHERIC STORE", desc:"A full-stack luxury e-commerce platform where customers can browse, favourite, and securely purchase products — with an admin dashboard to track orders and spending.", tags:["HTML","CSS","JS","Node","Express","Firebase","Supabase","Cloudinary"], liveLink:"https://aetheric-neon.vercel.app" },
-        { title:"AETHERIC ADMIN", desc:"Modern full-stack dashboard to manage the entire AETHERIC e-commerce ecosystem with real-time control over orders, products, customers, inventory, and revenue analytics.", tags:["HTML","CSS","JS","Express","Supabase"], liveLink:"https://aetheric-admin-panel.vercel.app" },
-        { title:"HOT N TASTY ROLL", desc:"Food ordering UI system with smooth UX flow.", tags:["HTML","CSS","JS","Node","Express","Supabase"], liveLink:"https://hot-n-tasty-roll.vercel.app/" },
-    ];
+export const projectsData = [
+    { 
+        title: "EDUSITY", 
+        desc: "Edusity is a modern university website built with React and CSS. Fully responsive, works on all devices, features clean UI/UX. Users can watch embedded video and interact via Web3 forms.", 
+        tags: ["React", "Tailwind", "Vercel"], 
+        liveLink: "https://edusity-com-beige.vercel.app/",
+        videoLink: "https://drive.google.com/file/d/1Dm7yCt_4WZ0QCYQFVR3w6OeLCQ9es3Gd/view?usp=drive_link"
+    },
+    { 
+        title: "QUICKSTAY", 
+        desc: "QuickStay — Scalable MERN booking platform with real-time availability, secure authentication & seamless hotel reservations.", 
+        tags: ["MERN stack", "Cloudinary", "Clerk"], 
+        liveLink: "https://hotel-booking-app-amber-omega.vercel.app/",
+        videoLink: "https://drive.google.com/file/d/1UuAwdkqZ3BZe7XyIjOqZ2ZBNPnmPMLzt/view?usp=drive_link"
+    },
+    { 
+        title: "AETHERIC STORE", 
+        desc: "A full-stack luxury e-commerce platform where customers can browse, favourite, and securely purchase products — with an admin dashboard to track orders and spending.", 
+        tags: ["HTML", "CSS", "JS", "Node", "Express", "Firebase", "Supabase", "Cloudinary"], 
+        liveLink: "https://aetheric-neon.vercel.app",
+        videoLink: null
+    },
+    { 
+        title: "AETHERIC ADMIN", 
+        desc: "Modern full-stack dashboard to manage the entire AETHERIC e-commerce ecosystem with real-time control over orders, products, customers, inventory, and revenue analytics.", 
+        tags: ["HTML", "CSS", "JS", "Express", "Supabase"], 
+        liveLink: "https://aetheric-admin-panel.vercel.app",
+        videoLink: null
+    },
+    { 
+        title: "HOT N TASTY ROLL", 
+        desc: "Restaurant website with AI chatbot, smooth food ordering UI, and SEO optimization. Fully deployed on Vercel with Google Search Console integration.", 
+        tags: ["HTML", "CSS", "JS", "Node", "Express", "Supabase"], 
+        liveLink: "https://hot-n-tasty-roll.vercel.app/",
+        videoLink: "https://drive.google.com/file/d/113tFBU9iyjCWPTC4FDVpN8BdU3_3iLLa/view?usp=drive_link"
+    },
+    { 
+        title: "MEDIXWEB", 
+        desc: "AI-powered hospital platform with symptom analysis, doctor recommendation, calendar-based appointment booking, WhatsApp confirmations, and Clerk authentication.", 
+        tags: ["React", "Node.js", "Supabase", "Groq", "Clerk", "Whapi", "Brevo"], 
+        liveLink: "https://medixweb-x89r.vercel.app/",
+        videoLink: "https://drive.google.com/file/d/1x5Eu8hp9pSWr51d_PhTPJ8pEEVdbXX00/view?usp=drive_link"
+    },
+    { 
+        title: "SAUD EMPORIUM", 
+        desc: "Premium ladies fashion e-commerce store — Sarees, Suits, Maxi & Jewelry. Full-stack with cart, wishlist, EasyPaisa checkout, and SEO foundations. Nexora's first client delivery.", 
+        tags: ["React", "Node.js", "PostgreSQL", "Supabase", "JWT"], 
+        liveLink: "#",
+        videoLink: "https://drive.google.com/file/d/1M0Fu91yVd0VGLrrwt1o4I27lxW-se_So/view?usp=drive_link"
+    },
+];
 
 export const pricingData = [
     { 
