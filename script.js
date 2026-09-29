@@ -320,8 +320,11 @@ function renderProjects() {
             <p>${p.desc}</p>
             <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
             <div class="actions">
-                <a href="${p.liveLink}" target="_blank">Live</a>
-                <a href="${githubLink}" target="_blank">GitHub</a>
+                <a href="${p.liveLink}" target="_blank">Live Demo</a>
+                ${p.videoLink 
+                    ? `<a href="${p.videoLink}" target="_blank">▶ Demo Video</a>` 
+                    : `<a href="${githubLink}" target="_blank">GitHub</a>`
+                }
             </div>
         </div>
     `).join('');
