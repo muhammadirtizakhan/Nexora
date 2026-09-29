@@ -45,13 +45,7 @@ export const projectsData = [
         liveLink: "https://aetheric-neon.vercel.app",
         videoLink: null
     },
-    { 
-        title: "AETHERIC ADMIN", 
-        desc: "Modern full-stack dashboard to manage the entire AETHERIC e-commerce ecosystem with real-time control over orders, products, customers, inventory, and revenue analytics.", 
-        tags: ["HTML", "CSS", "JS", "Express", "Supabase"], 
-        liveLink: "https://aetheric-admin-panel.vercel.app",
-        videoLink: null
-    },
+
     { 
         title: "HOT N TASTY ROLL", 
         desc: "Restaurant website with AI chatbot, smooth food ordering UI, and SEO optimization. Fully deployed on Vercel with Google Search Console integration.", 
