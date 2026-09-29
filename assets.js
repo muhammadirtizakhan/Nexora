@@ -119,6 +119,21 @@ export const faqsData = [
         answer: "Build a portfolio, join freelancing platforms, and start bidding on projects. Focus on small projects first to gain reviews." 
     },
 ];
-
+export const crmData = [
+    {
+        title: "AETHERIC ADMIN",
+        desc: "CRM & Analytics dashboard for Aetheric Store — Sales trends, Revenue by category, Top products, Peak hours, Orders management.",
+        tags: ["HTML", "CSS", "JS", "Express", "Supabase", "Chart.js"],
+        liveLink: "https://aetheric-admin-panel.vercel.app",
+        videoLink: "https://drive.google.com/file/d/1EDC8ykwhyq0hDnjIQZ-0wOx_e8wXHUcR/view?usp=drive_link"
+    },
+    {
+        title: "SAUD EMPORIUM CRM",
+        desc: "Full CRM & Analytics dashboard for Saud Emporium — Sales trend, Revenue by category (Sarees, Suits, Maxi, Jewelry), Top products, Peak hours tracking.",
+        tags: ["React", "Node.js", "Supabase", "Chart.js", "JWT"],
+        liveLink: "https://admin-panel-3vik-iota.vercel.app/dashboard",
+        videoLink: "https://drive.google.com/file/d/1gw5waUc58PnmDXwljwJ9DrsvRX9WSPsm/view?usp=drive_link"
+    },
+]
 export const githubLink = "https://github.com/muhmmmadirtizakhan";
 export const logos = ["framer", "huawei", "instagram", "microsoft", "walmart"];
