@@ -129,5 +129,35 @@ export const crmData = [
         videoLink: "https://drive.google.com/file/d/1gw5waUc58PnmDXwljwJ9DrsvRX9WSPsm/view?usp=drive_link"
     },
 ]
+export const chatbotsData = [
+    {
+        title: "LUMINA AI",
+        desc: "Smart AI Assistant powered by Google Gemini 2.5 Flash. Clean chat interface with Markdown support, code blocks, fast responses, and fully responsive design.",
+        tags: ["HTML", "CSS", "JS", "Node.js", "Express.js", "Gemini 2.5 Flash", "Vercel"],
+        liveLink: "https://lumina-eta-eight.vercel.app/",
+        videoLink: null
+    },
+    {
+        title: "REHNUMA",
+        desc: "AI chatbot assistant built for internship guidance — helps students find internship opportunities, understand requirements, and navigate their career path.",
+        tags: ["HTML", "CSS", "JS", "Node.js", "Express.js", "Vercel"],
+        liveLink: "https://rehnuma-seven.vercel.app/",
+        videoLink: null
+    },
+    {
+        title: "NEXORA AI",
+        desc: "Custom AI chatbot integrated in Nexora's main website — answers queries about services, pricing, and guides potential clients through Nexora's offerings.",
+        tags: ["HTML", "CSS", "JS", "Node.js", "Groq", "Vercel"],
+        liveLink: "https://nexora-five-topaz.vercel.app/",
+        videoLink: null
+    },
+    {
+        title: "HOT N TASTY AI",
+        desc: "Restaurant AI chatbot embedded in Hot N Tasty Roll website — helps customers explore menu, deals, and restaurant info via natural conversation.",
+        tags: ["HTML", "CSS", "JS", "Node.js", "Groq", "Vercel"],
+        liveLink: "https://hot-n-tasty-roll.vercel.app/",
+        videoLink: null
+    },
+]
 export const githubLink = "https://github.com/muhmmmadirtizakhan";
 export const logos = ["framer", "huawei", "instagram", "microsoft", "walmart"];
