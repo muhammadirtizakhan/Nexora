@@ -22,15 +22,6 @@ import {
     logos 
 } from './assets.js';
 // ================= IMPORT DATA FROM ASSETS =================
-import { 
-    featuresData, 
-    projectsData, 
-    pricingData, 
-    faqsData, 
-    githubLink,
-    logos 
-} from './assets.js';
-
 // ============================================================
 //  AUTH MODAL HELPERS
 // ============================================================
