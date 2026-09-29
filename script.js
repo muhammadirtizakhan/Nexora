@@ -16,6 +16,7 @@ import {
     featuresData, 
     projectsData,
     crmData,  // ← yeh add karo
+    chatbotsData,
     pricingData, 
     faqsData, 
     githubLink,
@@ -449,25 +450,47 @@ let currentProjectTab = 'websites'
 function switchProjectTab(tab) {
     currentProjectTab = tab
     
-    // Tabs styling
-    const websiteBtn = document.getElementById('tab-websites')
-    const crmsBtn = document.getElementById('tab-crms')
-    
-    if (tab === 'websites') {
-        websiteBtn.classList.add('bg-purple-600', 'text-white')
-        websiteBtn.classList.remove('text-purple-600', 'dark:text-purple-400')
-        crmsBtn.classList.remove('bg-purple-600', 'text-white')
-        crmsBtn.classList.add('text-purple-600', 'dark:text-purple-400')
-        renderProjects()
-    } else {
-        crmsBtn.classList.add('bg-purple-600', 'text-white')
-        crmsBtn.classList.remove('text-purple-600', 'dark:text-purple-400')
-        websiteBtn.classList.remove('bg-purple-600', 'text-white')
-        websiteBtn.classList.add('text-purple-600', 'dark:text-purple-400')
-        renderCRMs()
-    }
-}
+    const websiteBtn  = document.getElementById('tab-websites')
+    const crmsBtn     = document.getElementById('tab-crms')
+    const chatbotsBtn = document.getElementById('tab-chatbots')
 
+    // Sab reset karo
+    ;[websiteBtn, crmsBtn, chatbotsBtn].forEach(btn => {
+        if (btn) {
+            btn.classList.remove('bg-purple-600', 'text-white')
+            btn.classList.add('text-purple-600', 'dark:text-purple-400')
+        }
+    })
+
+    // Active tab highlight karo
+    const activeBtn = document.getElementById(`tab-${tab}`)
+    if (activeBtn) {
+        activeBtn.classList.add('bg-purple-600', 'text-white')
+        activeBtn.classList.remove('text-purple-600', 'dark:text-purple-400')
+    }
+
+    if (tab === 'websites') renderProjects()
+    else if (tab === 'crms') renderCRMs()
+    else if (tab === 'chatbots') renderChatbots()
+}
+function renderChatbots() {
+    const el = document.getElementById('projects-container')
+    if (!el) return
+    el.innerHTML = chatbotsData.map(p => `
+        <div class="card">
+            <h2>${p.title}</h2>
+            <p>${p.desc}</p>
+            <div class="tags">${p.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+            <div class="actions">
+                <a href="${p.liveLink}" target="_blank">Live Demo</a>
+                ${p.videoLink 
+                    ? `<a href="${p.videoLink}" target="_blank">▶ Demo Video</a>` 
+                    : `<a href="${githubLink}" target="_blank">GitHub</a>`
+                }
+            </div>
+        </div>
+    `).join('')
+}
 function renderCRMs() {
     const el = document.getElementById('projects-container')
     if (!el) return
