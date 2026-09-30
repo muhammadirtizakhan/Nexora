@@ -72,25 +72,24 @@ export const projectsData = [
 export const pricingData = [
     { 
         title: "Basic Plan", 
-        price: '5k-10k', 
-        features: ["SEO Optimization, Google Analytics Setup", "Deployed & working dynamically", "Stunning UI/UX Design", "No backend engineering", "Responsive on all device", "Basic chatbot"], 
+        price: '11k-15k', 
+        features: ["SEO Optimization, Google Analytics Setup", "Deployed & working dynamically", "Stunning UI/UX Design", "No backend engineering", "Responsive on all device", "Basic chatbot", "Domain included (at current rate)"], 
         buttonText: "connect with us" 
     },
     { 
         title: "Pro Plan", 
-        price: '10k-20k', 
+        price: '17k-24k', 
         mostPopular: true, 
-        features: ["Domain provided", "Stunning UI/UX Design", "Active Backend Engineering", "Website statistics", "Chatbot with LLM integration", "Compatible on all devices", "Agents upon client requests"], 
+        features: ["Domain included (at current rate)", "Stunning UI/UX Design", "Active Backend Engineering", "Website statistics", "Chatbot with LLM integration", "Compatible on all devices", "Agents upon client requests", "Monthly maintenance plan: 3k-5k/month"], 
         buttonText: "connect with us" 
     },
     { 
         title: "Enterprise Plan", 
-        price: '20k-50k', 
+        price: '26k-50k', 
         features: ["System Architecture", "Maintenance and updates", "Team Collaboration", "Custom Integrations", "Fascinating UI/UX"], 
         buttonText: "connect with us" 
     },
 ];
-
 export const faqsData = [
     { 
         question: "How we get clients?", 
