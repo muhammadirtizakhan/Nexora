@@ -44,8 +44,42 @@ async function generateEmbedding(text) {
   return data.data[0].embedding;
 }
 
+// ── Re-ranker ─────────────────────────────────────────────
+async function rerankChunks(query, chunks, topN = 3) {
+  try {
+    const response = await fetch('https://api.jina.ai/v1/rerank', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.JINA_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'jina-reranker-v2-base-multilingual',
+        query: query,
+        documents: chunks,
+        top_n: topN
+      })
+    });
+
+    if (!response.ok) {
+      console.error('❌ Reranker failed — using original chunks');
+      return chunks.slice(0, topN);
+    }
+
+    const data = await response.json();
+    console.log(`🎯 Re-ranked — top ${topN} selected`);
+    return data.results
+      .sort((a, b) => b.relevance_score - a.relevance_score)
+      .map(r => r.document.text);
+
+  } catch (err) {
+    console.error('❌ Reranker error:', err.message);
+    return chunks.slice(0, topN);
+  }
+}
+
 // ── Similarity search ─────────────────────────────────────
-async function retrieveContext(query, topK = 5) {
+async function retrieveContext(query, topK = 10) {
   const queryEmbedding = await generateEmbedding(query);
 
   const { data, error } = await supabase.rpc('match_nexora_docs', {
@@ -59,7 +93,9 @@ async function retrieveContext(query, topK = 5) {
     return [];
   }
 
-  return data.map(d => d.content);
+  const chunks = data.map(d => d.content);
+  const reranked = await rerankChunks(query, chunks, 3);
+  return reranked;
 }
 
 // ── Chat endpoint ─────────────────────────────────────────
@@ -98,7 +134,7 @@ ${context}
 --- END CONTEXT ---`;
 
     const completion = await groq.chat.completions.create({
-      model: 'llama-3.3-70b-versatile',
+      model: 'openai/gpt-oss-120b',
       messages: [
         { role: 'system', content: systemPrompt },
         { role: 'user', content: message }
