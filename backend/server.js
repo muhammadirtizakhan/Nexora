@@ -94,6 +94,8 @@ async function retrieveContext(query, topK = 10) {
   }
 
   const chunks = data.map(d => d.content);
+  console.log('🔍 Raw data[0]:', JSON.stringify(data[0]));
+console.log('📝 Context preview:', context.substring(0, 200));
   const reranked = await rerankChunks(query, chunks, 3);
   return reranked;
 }
