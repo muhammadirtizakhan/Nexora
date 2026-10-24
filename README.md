@@ -1,8 +1,8 @@
 <div align="center">
 
-# Nexora Digital Solutions
+# Nexora Solvex
 
-<img src="https://res.cloudinary.com/djaonuvzx/image/upload/v1790244415/ChatGPT_Image_Sep_24_2026_03_06_36_PM_qgkrhw.png" alt="Nexora Logo" width="200"/>
+<img src="https://res.cloudinary.com/djaonuvzx/image/upload/v1790244415/ChatGPT_Image_Sep_24_2026_03_06_36_PM_qgkrhw.png" alt="NexoraSolveX Logo" width="280"/>
 
 <br/>
 
@@ -98,8 +98,35 @@ Modular chatbot UI components and frontend ecosystems designed for rapid integra
 |---------|-------------|-------|--------|
 | [🍔 Hot N Tasty Roll](https://hot-n-tasty-roll.vercel.app/) | Restaurant website with conversational AI chatbot integration | HTML · CSS · JS · Node.js · Firebase · Supabase | ✅ Live |
 | [🛍️ Aetheric E-Commerce](https://aetheric-neon.vercel.app/) | Full e-commerce infrastructure with auth & product management | HTML · CSS · JS · Node.js · Firebase · Supabase | ✅ Live |
-| [🖥️ Aetheric Admin Dashboard](https://aetheric-admin-panel.vercel.app/) | Scalable admin dashboard with analytics & workflow management | HTML · CSS · JS · Dashboard Systems | ✅ Live |
 | [🏨 Hotel Booking Platform](https://hotel-booking-app-amber-omega.vercel.app/) | Modern hotel discovery & booking interface | HTML · CSS · JS · Node.js · MongoDB · Clerk | ✅ Live |
+| [🏬 Saud Emporium](https://www.saudemporium.com) | Online e-commerce store for browsing and ordering products | E-commerce Development | ✅ Live |
+
+---
+
+## 📝 Client Feedback Portal
+
+A client-facing form where Nexora clients share their project details and honest feedback once a project is delivered. Every response is stored securely and privately, so the team has a clean record of each project and what the client thought of it.
+
+**What the form collects**
+- **Client information:** name, email, company, project name, website, and an optional profile picture
+- **Project & deployment details:** service plan (Basic / Pro / Enterprise), service category, deployment platform and live URL, project cost, delivery date, and project status
+- **Experience ratings:** 1–5 stars for overall experience, design quality, performance, communication & support, and delivery & project handling, plus written feedback and suggestions
+- **Confirmation:** a required accuracy declaration, an optional signature image, and optional consent to use the feedback for portfolio or marketing purposes
+
+**What it does for the client**
+- Animated welcome screen, a mobile-friendly layout, and inline validation with clear error messages
+- A "Review Details" step before submitting
+- A thank-you page with a server-generated **Reference ID** and a printable / Save-as-PDF summary
+
+**How it works behind the scenes**
+- The browser sends the form to a serverless API route (`/api/submit`) on Vercel, so no database keys are ever exposed to visitors
+- The server validates every field, checks that uploaded files are real images, and saves the response to a **Supabase** (PostgreSQL) table with a server-generated timestamp and Reference ID
+- Profile and signature images go to a **private Supabase Storage** bucket, and the database blocks all direct public access
+- A hidden honeypot field and same-site request checks help filter out spam bots
+
+| Project | Description | Stack | Status |
+|---------|-------------|-------|--------|
+| Client Feedback Portal | Client feedback & project record form with secure server-side storage | HTML · CSS · JS · Vercel Serverless · Supabase | ✅ Live |
 
 ---
 
@@ -107,18 +134,24 @@ Modular chatbot UI components and frontend ecosystems designed for rapid integra
 
 | Plan | Price Range | Best For |
 |------|------------|---------|
-| 🥉 **Basic** | PKR 5,000 – 10,000 | Simple websites & landing pages |
-| 🥈 **Pro** | PKR 10,000 – 20,000 | Full websites with backend & chatbot |
-| 🥇 **Enterprise** | PKR 20,000 – 50,000+ | Complete digital systems & AI integrations |
+| 🥉 **Basic** | PKR 11,000 – 15,000 | Simple websites & landing pages |
+| 🥈 **Pro** | PKR 17,000 – 24,000 | Full websites with backend & chatbot |
+| 🥇 **Enterprise** | PKR 30,000 – 60,000+ | Complete digital systems & AI integrations |
 
 > 💬 Final pricing is determined after project analysis and requirement evaluation. [Contact us](https://nexora.vercel.app) for a custom quote.
+
+---
+
+## 🔗 Explore More
+
+For more projects and source code, explore our GitHub: [github.com/muhammadirtizakhan](https://github.com/muhammadirtizakhan)
 
 ---
 ---
 
 <div align="center">
 
-<img src="https://www.nexoraglobal.info/_next/image?url=%2Fimages%2Flogo.png&w=640&q=75" alt="Nexora Logo" width="100"/>
+<img src="https://res.cloudinary.com/djaonuvzx/image/upload/v1790244415/ChatGPT_Image_Sep_24_2026_03_06_36_PM_qgkrhw.png" alt="Nexora Logo" width="100"/>
 
 <br/>
 
