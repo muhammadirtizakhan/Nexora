@@ -147,7 +147,7 @@ export const chatbotsData = [
         title: "NEXORA AI",
         desc: "Custom AI chatbot integrated in Nexora's main website — answers queries about services, pricing, and guides potential clients through Nexora's offerings.",
         tags: ["HTML", "CSS", "JS", "Node.js", "Groq", "Vercel"],
-        liveLink: "https://nexora-five-topaz.vercel.app/",
+        liveLink: "https://www.nexorasolvex.com/",
         videoLink: null
     },
     {
